@@ -83,6 +83,6 @@ var run = function(options) {
       }, nextRunIn);
     }
   });
-}
+};
 
 run({ip: "185.40.65.1", interval: 1000});
