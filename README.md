@@ -10,9 +10,10 @@ Example usage:
 
 ```javascript
 var pingMetrics = require('ping-metrics');
-var google = "8.8.8.8";
 
-pingMetrics({ip: google, interval: 1000}, function(details) {
+// Get rolling 60 second metrics on Google DNS ping.
+var google = "8.8.8.8";
+pingMetrics({ip: google, interval: 1000, numIntervals: 60}, function(details) {
   console.log([
     "Current Ping: " + details.ping,
     "Avg: " + details.average,
