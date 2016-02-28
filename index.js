@@ -3,6 +3,7 @@ var _ = require('lodash');
 var session = ping.createSession({timeout: 1000});
 var interval;
 var ip;
+var numIntervals;
 var pingValues = [];
 
 _.standardDeviation = function(values) {
@@ -59,9 +60,13 @@ var run = function(options) {
   var timeStart = new Date().getTime();
   ip = options.ip;
   interval = options.interval || 1000;
+  numIntervals = options.numIntervals || 60;
 
   getPing(ip, function(pingValue) {
     pingValues.push(pingValue);
+    if (pingValues.length > numIntervals) {
+      pingValues.shift();
+    }
     console.log(pingValue);
     console.log("AVG", pingAverage());
     console.log("LOSS", pingPacketLossPercent());
