@@ -64,6 +64,7 @@ var pingHealth = function(options, cb) {
       }
       cb({
         ping: pingValue,
+        pings: pingValues,
         average: pingAverage(pingValues),
         loss: pingPacketLossPercent(pingValues),
         standardDeviation: pingStandardDeviation(pingValues)
