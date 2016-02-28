@@ -36,7 +36,7 @@ var pingAverage = function() {
   if (values.length === 0) {
     return 0;
   }
-	return Math.round(_.mean(values));
+	return _.mean(values);
 };
 
 var pingPacketLossPercent = function() {
@@ -45,7 +45,7 @@ var pingPacketLossPercent = function() {
   }
   var lostPacketsCount = pingValues.length - unlostPings().length;
   var lossPercent = lostPacketsCount / pingValues.length * 100;
-  return Math.round(lossPercent);
+  return lossPercent;
 };
 
 var pingStandardDeviation = function() {
@@ -68,9 +68,9 @@ var run = function(options) {
       pingValues.shift();
     }
     console.log(pingValue);
-    console.log("AVG", pingAverage());
-    console.log("LOSS", pingPacketLossPercent());
-    console.log("STDEV", pingStandardDeviation());
+    console.log("AVG", Math.round(pingAverage()));
+    console.log("LOSS", Math.round(pingPacketLossPercent()));
+    console.log("STDEV", Math.round(pingStandardDeviation()));
 
     var timeEnd = new Date().getTime();
     var nextRunIn = interval - (timeEnd - timeStart);
