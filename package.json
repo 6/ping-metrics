@@ -1,11 +1,11 @@
 {
-  "name": "ping-health",
+  "name": "ping-metrics",
   "version": "1.0.0",
   "description": "Ping (ICMP) rolling metrics",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/6/ping-health.git"
+    "url": "git://github.com/6/ping-metrics.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

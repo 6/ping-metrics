@@ -41,7 +41,7 @@ var pingStandardDeviation = function(values) {
   return standardDeviation(values);
 };
 
-var pingHealth = function(options, cb) {
+var pingMetrics = function(options, cb) {
   sessionId += 1;
   var interval = options.interval || 1000;
   var numIntervals = options.numIntervals || 60;
@@ -81,4 +81,4 @@ var pingHealth = function(options, cb) {
   run();
 };
 
-module.exports = pingHealth;
+module.exports = pingMetrics;

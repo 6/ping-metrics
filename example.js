@@ -1,8 +1,8 @@
 // Example usage. Run with `node example.js`
 
-var pingHealth = require('./index');
+var pingMetrics = require('./index');
 
-pingHealth({ip: "104.160.131.1", interval: 1000}, function(details) {
+pingMetrics({ip: "104.160.131.1", interval: 1000}, function(details) {
   console.log([
     "NA Ping: " + Math.round(details.ping),
     "Avg: " + Math.round(details.average),
@@ -11,7 +11,7 @@ pingHealth({ip: "104.160.131.1", interval: 1000}, function(details) {
   ].join(" "));
 });
 
-pingHealth({ip: "185.40.65.1", interval: 3000}, function(details) {
+pingMetrics({ip: "185.40.65.1", interval: 3000}, function(details) {
   console.log([
     "EUW Ping: " + Math.round(details.ping),
     "Avg: " + Math.round(details.average),
