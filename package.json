@@ -1,0 +1,19 @@
+{
+  "name": "ping-health",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/6/ping-health.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.5.1",
+    "net-ping": "^1.1.12"
+  }
+}
