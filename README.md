@@ -1,6 +1,10 @@
 # ping-metrics
 
-Ping an IP address and get rolling metrics such as average ping, ping standard deviation, and packet loss %.
+Ping an IP address and get rolling metrics such as:
+
+- average ping
+- ping standard deviation
+- packet loss %
 
 Example usage:
 
