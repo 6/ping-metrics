@@ -10,10 +10,10 @@ var google = "8.8.8.8";
 
 pingMetrics({ip: google, interval: 1000}, function(details) {
   console.log([
-    "Google DNS Ping: " + Math.round(details.ping),
-    "Avg: " + Math.round(details.average),
-    "Stdev: " + Math.round(details.standardDeviation),
-    "Packet loss: " + Math.round(details.loss) + "%"
+    "Current Ping: " + details.ping,
+    "Avg: " + details.average,
+    "Stdev: " + details.standardDeviation,
+    "Packet loss: " + details.loss + "%"
   ].join(" "));
 });
 ```
