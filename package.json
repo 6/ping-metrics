@@ -1,7 +1,7 @@
 {
   "name": "ping-health",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ping (ICMP) rolling metrics",
   "main": "index.js",
   "repository": {
     "type": "git",
