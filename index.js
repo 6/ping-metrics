@@ -1,6 +1,6 @@
 var ping = require('net-ping');
 var _ = require('lodash');
-var session = ping.createSession({timeout: 1000});
+var session;
 var interval;
 var ip;
 var numIntervals;
@@ -56,33 +56,35 @@ var pingStandardDeviation = function() {
   return standardDeviation(values);
 };
 
-var run = function(options) {
+var run = function(options, cb) {
   var timeStart = new Date().getTime();
   ip = options.ip;
   interval = options.interval || 1000;
   numIntervals = options.numIntervals || 60;
+  session = session || ping.createSession({timeout: interval});
 
   getPing(ip, function(pingValue) {
     pingValues.push(pingValue);
     if (pingValues.length > numIntervals) {
       pingValues.shift();
     }
-    console.log(pingValue);
-    console.log("AVG", Math.round(pingAverage()));
-    console.log("LOSS", Math.round(pingPacketLossPercent()));
-    console.log("STDEV", Math.round(pingStandardDeviation()));
-
+    cb({
+      ping: pingValue,
+      average: pingAverage(),
+      loss: pingPacketLossPercent(),
+      standardDeviation: pingStandardDeviation()
+    })
     var timeEnd = new Date().getTime();
     var nextRunIn = interval - (timeEnd - timeStart);
     if (nextRunIn <= 0) {
-      run(options);
+      run(options, cb);
     }
     else {
       setTimeout(function() {
-        run(options);
+        run(options, cb);
       }, nextRunIn);
     }
   });
 };
 
-run({ip: "185.40.65.1", interval: 1000});
+module.exports = run;
