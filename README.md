@@ -10,15 +10,17 @@ Example usage:
 
 ```javascript
 var pingMetrics = require('ping-metrics');
-
-// Get rolling 60 second metrics on Google DNS ping.
-var google = "8.8.8.8";
-pingMetrics({ip: google, interval: 1000, numIntervals: 60}, function(details) {
+var options = {
+  ip: "8.8.8.8",   // IP address to ping
+  interval: 1000,  // interval at which to ping (milliseconds)
+  numIntervals: 60 // number of intervals that the rolling window should last
+};
+pingMetrics(options, function(metrics) {
   console.log([
-    "Current Ping: " + details.ping,
-    "Avg: " + details.average,
-    "Stdev: " + details.standardDeviation,
-    "Packet loss: " + details.loss + "%"
+    "Current Ping: " + metrics.ping,
+    "Avg: " + metrics.average,
+    "Stdev: " + metrics.standardDeviation,
+    "Packet loss: " + metrics.loss + "%"
   ].join(" "));
 });
 ```

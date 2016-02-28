@@ -2,20 +2,20 @@
 
 var pingMetrics = require('./index');
 
-pingMetrics({ip: "104.160.131.1", interval: 1000}, function(details) {
+pingMetrics({ip: "104.160.131.1", interval: 1000}, function(metrics) {
   console.log([
-    "NA Ping: " + Math.round(details.ping),
-    "Avg: " + Math.round(details.average),
-    "Stdev: " + Math.round(details.standardDeviation),
-    "Loss: " + Math.round(details.loss) + "%"
+    "NA Ping: " + Math.round(metrics.ping),
+    "Avg: " + Math.round(metrics.average),
+    "Stdev: " + Math.round(metrics.standardDeviation),
+    "Loss: " + Math.round(metrics.loss) + "%"
   ].join(" "));
 });
 
-pingMetrics({ip: "185.40.65.1", interval: 3000}, function(details) {
+pingMetrics({ip: "185.40.65.1", interval: 3000}, function(metrics) {
   console.log([
-    "EUW Ping: " + Math.round(details.ping),
-    "Avg: " + Math.round(details.average),
-    "Stdev: " + Math.round(details.standardDeviation),
-    "Loss: " + Math.round(details.loss) + "%"
+    "EUW Ping: " + Math.round(metrics.ping),
+    "Avg: " + Math.round(metrics.average),
+    "Stdev: " + Math.round(metrics.standardDeviation),
+    "Loss: " + Math.round(metrics.loss) + "%"
   ].join(" "));
 });
