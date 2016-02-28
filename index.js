@@ -53,7 +53,7 @@ var pingHealth = function(options, cb) {
     var timeStart = new Date().getTime();
     session.pingHost(options.ip, function(err, target, sent, rcvd) {
       var pingValue = rcvd - sent;
-      if(err) {
+      if(err || (pingValue >= timeout)) {
         pingValues.push(null);
       }
       else {
