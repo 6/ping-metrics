@@ -6,7 +6,7 @@ var ip;
 var numIntervals;
 var pingValues = [];
 
-_.standardDeviation = function(values) {
+var standardDeviation = function(values) {
   var average = _.mean(values);
   var squareDiffs = _.map(values, function(value) {
     return Math.pow(value - average, 2);
@@ -53,7 +53,7 @@ var pingStandardDeviation = function() {
   if (values.length === 0) {
     return 0;
   }
-  return _.standardDeviation(values);
+  return standardDeviation(values);
 };
 
 var run = function(options) {
