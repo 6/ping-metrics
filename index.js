@@ -48,8 +48,12 @@ var pingMetrics = function(options, cb) {
   var timeout = Math.min(interval, options.timeout || 500);
   var session = ping.createSession({timeout: timeout, sessionId: sessionId});
   var pingValues = [];
+  var stop = false;
 
   var run = function() {
+    if (stop) {
+      return;
+    }
     var timeStart = new Date().getTime();
     session.pingHost(options.ip, function(err, target, sent, rcvd) {
       var pingValue = rcvd - sent;
@@ -78,7 +82,15 @@ var pingMetrics = function(options, cb) {
       }
     });
   };
-  run();
+  return {
+    run: function() {
+      stop = false;
+      run();
+    },
+    stop: function() {
+      stop = true;
+    }
+  };
 };
 
 module.exports = pingMetrics;

@@ -15,7 +15,7 @@ var options = {
   interval: 1000,  // interval at which to ping (milliseconds)
   numIntervals: 60 // number of intervals that the rolling window should last
 };
-pingMetrics(options, function(metrics) {
+var ping = pingMetrics(options, function(metrics) {
   console.log([
     "Current Ping: " + metrics.ping,
     "Avg: " + metrics.average,
@@ -23,4 +23,9 @@ pingMetrics(options, function(metrics) {
     "Packet loss: " + metrics.loss + "%"
   ].join(" "));
 });
+ping.run();
+
+// You can also stop and resume:
+ping.stop();
+ping.run();
 ```
