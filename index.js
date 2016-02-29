@@ -21,7 +21,7 @@ var pingAverage = function(values) {
   if (values.length === 0) {
     return 0;
   }
-	return _.mean(values);
+  return _.mean(values);
 };
 
 var pingPacketLossPercent = function(values) {
