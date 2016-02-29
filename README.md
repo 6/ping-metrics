@@ -1,4 +1,4 @@
-# ping-metrics
+# ping-metrics [![NPM Version](http://img.shields.io/npm/v/ping-metrics.svg?style=flat)](https://www.npmjs.org/package/ping-metrics)
 
 Ping an IP address and get rolling metrics such as:
 
